@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import { useState } from 'react'
 import { createClient } from '@supabase/supabase-js'
-import Link from 'next/link'
 
 export async function getStaticProps() {
   const supabaseAdmin = createClient(
@@ -50,7 +49,7 @@ function BlurImage({ image }: { image: Image }) {
   const [isLoading, setLoading] = useState(true)
 
   return (
-    <Link href="/" className="group">
+    <a target="_blank" href={image.imageSrc} className="group">
       <div>
         <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
           <Image
@@ -72,6 +71,6 @@ function BlurImage({ image }: { image: Image }) {
           {image.username}
         </p>
       </div>
-    </Link>
+    </a>
   )
 }
